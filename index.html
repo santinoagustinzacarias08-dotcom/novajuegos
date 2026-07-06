@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game Hub Pro</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0a0f1c;
+      color: white;
+      display: flex;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 220px;
+      background: #111a2e;
+      height: 100vh;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: bold;
+      color: #38bdf8;
+      margin-bottom: 20px;
+    }
+
+    .menu button {
+      width: 100%;
+      background: #16213e;
+      border: none;
+      color: white;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .menu button:hover {
+      background: #2563eb;
+    }
+
+    /* MAIN */
+    .main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .profile {
+      background: #16213e;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: #16213e;
+      padding: 15px;
+      border-radius: 12px;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      background: #1e2a4d;
+    }
+
+    .title {
+      color: #38bdf8;
+      margin-bottom: 5px;
+    }
+
+    /* CHAT */
+    .chat {
+      margin-top: 25px;
+      background: #111a2e;
+      padding: 15px;
+      border-radius: 12px;
+    }
+
+    .chat-box {
+      height: 120px;
+      overflow-y: auto;
+      background: #0f172a;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .chat input {
+      width: 80%;
+      padding: 8px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .chat button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="logo">🎮 Game Hub Pro</div>
+
+    <div class="menu">
+      <button onclick="show('home')">🏠 Inicio</button>
+      <button onclick="show('games')">🔥 Juegos</button>
+      <button onclick="show('news')">📰 Noticias</button>
+      <button onclick="show('chat')">💬 Chat</button>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <div class="topbar">
+      <h2 id="title">Inicio</h2>
+      <div class="profile">👤 Usuario</div>
+    </div>
+
+    <!-- HOME -->
+    <div id="home">
+
+      <div class="grid">
+        <div class="card">
+          <div class="title">Bienvenido</div>
+          <p>Esta es tu plataforma gamer pro.</p>
+        </div>
+
+        <div class="card">
+          <div class="title">Estado</div>
+          <p>🟢 Online - Jugando</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GAMES -->
+    <div id="games" style="display:none;">
+      <div class="grid">
+
+        <div class="card">
+          <div class="title">Minecraft</div>
+          <p>Construcción y supervivencia.</p>
+        </div>
+
+        <div class="card">
+          <div class="title">Valorant</div>
+          <p>FPS competitivo.</p>
+        </div>
+
+        <div class="card">
+          <div class="title">Fortnite</div>
+          <p>Battle royale.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- NEWS -->
+    <div id="news" style="display:none;">
+      <div class="grid">
+
+        <div class="card">
+          <div class="title">Update</div>
+          <p>Nueva temporada disponible.</p>
+        </div>
+
+        <div class="card">
+          <div class="title">Evento</div>
+          <p>Recompensas dobles activas.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CHAT -->
+    <div id="chat" style="display:none;">
+      <div class="chat">
+        <div class="chat-box" id="chatBox">
+          <p><b>Sistema:</b> Bienvenido al chat 💬</p>
+        </div>
+
+        <input id="msg" placeholder="Escribe un mensaje..." />
+        <button onclick="send()">Enviar</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function show(section) {
+      document.getElementById("home").style.display = "none";
+      document.getElementById("games").style.display = "none";
+      document.getElementById("news").style.display = "none";
+      document.getElementById("chat").style.display = "none";
+
+      document.getElementById(section).style.display = "block";
+      document.getElementById("title").innerText = section.toUpperCase();
+    }
+
+    function send() {
+      const msg = document.getElementById("msg");
+      const box = document.getElementById("chatBox");
+
+      if (!msg.value) return;
+
+      box.innerHTML += "<p><b>Tú:</b> " + msg.value + "</p>";
+      msg.value = "";
+      box.scrollTop = box.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
