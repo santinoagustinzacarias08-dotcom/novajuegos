@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nova Juegos - Parte 1A</title>
+<meta name="description" content="Nova Juegos - Portal gamer">
+<style>
+:root{
+ --bg:#08111f;--card:#121d31;--a:#4f8cff;--b:#8b5cf6;--text:#eef3ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:linear-gradient(180deg,#08111f,#0f172a);color:var(--text)}
+nav{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;
+padding:18px 40px;background:rgba(8,17,31,.8);backdrop-filter:blur(12px);border-bottom:1px solid #24314d}
+.logo{font-size:1.5rem;font-weight:700;color:#7dd3fc}
+nav a{color:#dbeafe;text-decoration:none;margin-left:18px}
+.hero{padding:140px 30px 80px;text-align:center;
+background:radial-gradient(circle at top,#312e81 0,#08111f 60%)}
+.hero h1{font-size:3rem}
+.hero p{max-width:700px;margin:18px auto;color:#cbd5e1}
+.buttons a{display:inline-block;margin:8px;padding:14px 24px;border-radius:12px;
+background:linear-gradient(90deg,var(--a),var(--b));color:white;text-decoration:none}
+section{padding:60px 30px}
+.search{max-width:700px;margin:20px auto}
+.search input{width:100%;padding:14px;border-radius:12px;border:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:var(--card);padding:18px;border-radius:14px;transition:.25s}
+.card:hover{transform:translateY(-5px)}
+button{margin-top:12px;padding:10px 14px;border:none;border-radius:10px;background:var(--a);color:#fff;cursor:pointer}
+.modal{display:none;position:fixed;inset:0;background:#0008;align-items:center;justify-content:center}
+.modalbox{background:#0f172a;padding:22px;border-radius:16px;max-width:500px;width:90%}
+</style>
+</head>
+<body>
+<nav>
+<div class="logo">🎮 Nova Juegos</div>
+<div>
+<a href="#inicio">Inicio</a>
+<a href="#juegos">Juegos</a>
+</div>
+</nav>
+
+<section id="inicio" class="hero">
+<h1>Todo el universo gamer en un solo lugar</h1>
+<p>Portal profesional con noticias, rankings, fichas de juegos y mucho más.</p>
+<div class="buttons">
+<a href="#juegos">Explorar juegos</a>
+<a href="#noticias">Últimas noticias</a>
+</div>
+</section>
+
+<section id="juegos">
+<h2>Juegos destacados (Parte 1A)</h2>
+<div class="search"><input id="buscar" placeholder="Buscar juego..."></div>
+<div class="grid" id="lista">
+</div>
+</section>
+
+<div id="modal" class="modal">
+<div class="modalbox">
+<h2 id="mt"></h2>
+<p id="md"></p>
+<button onclick="cerrar()">Cerrar</button>
+</div>
+</div>
+
+<script>
+const juegos=[
+["Minecraft","Mojang Studios (2011)"],
+["Fortnite","Epic Games (2017)"],
+["Valorant","Riot Games (2020)"],
+["Grand Theft Auto V","Rockstar Games (2013)"],
+["Counter-Strike 2","Valve (2023)"],
+["League of Legends","Riot Games (2009)"],
+["Rust","Facepunch Studios (2018)"],
+["Rocket League","Psyonix (2015)"],
+["Roblox","Roblox Corporation (2006)"],
+["Terraria","Re-Logic (2011)"]
+];
+const lista=document.getElementById("lista");
+function render(f=""){
+ lista.innerHTML="";
+ juegos.filter(j=>j[0].toLowerCase().includes(f.toLowerCase())).forEach(j=>{
+  lista.innerHTML+=`<div class="card"><h3>${j[0]}</h3><p>${j[1]}</p><button onclick="ver('${j[0]}','${j[1]}')">Ver ficha</button></div>`;
+ });
+}
+function ver(t,d){
+ mt.textContent=t;
+ md.textContent=d+"\nPróximamente esta ficha incluirá historia, plataformas, género, curiosidades y más.";
+ modal.style.display="flex";
+}
+function cerrar(){modal.style.display="none";}
+buscar.oninput=e=>render(e.target.value);
+render();
+</script>
+</body>
+</html>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nova Juegos - Parte 1B</title>
+<style>
+body{margin:0;font-family:Arial;background:#08111f;color:#eef}
+header{padding:30px;text-align:center;background:linear-gradient(90deg,#2563eb,#7c3aed)}
+input{width:min(700px,90%);padding:12px;border-radius:10px;border:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:24px}
+.card{background:#12203a;padding:16px;border-radius:12px}
+button{padding:8px 12px;border:none;border-radius:8px;background:#3b82f6;color:#fff;cursor:pointer}
+#modal{display:none;position:fixed;inset:0;background:#0008;align-items:center;justify-content:center}
+.box{background:#111b2f;padding:20px;border-radius:12px;max-width:550px;width:90%}
+</style></head><body>
+<header><h1>Nova Juegos - Parte 1B</h1>
+<input id="q" placeholder="Buscar juego..."></header>
+<div class="grid" id="grid"></div>
+<div id="modal"><div class="box"><h2 id="t"></h2><p id="info"></p><button onclick="modal.style.display='none'">Cerrar</button></div></div>
+<script>
+const juegos=[
+["Minecraft","Mojang Studios","2011","Sandbox","PC, Consolas, Móvil"],
+["Fortnite","Epic Games","2017","Battle Royale","PC, Consolas, Móvil"],
+["Valorant","Riot Games","2020","Shooter","PC, Consolas"],
+["GTA V","Rockstar Games","2013","Acción","PC, Consolas"],
+["Counter-Strike 2","Valve","2023","Shooter","PC"],
+["League of Legends","Riot Games","2009","MOBA","PC"],
+["Rocket League","Psyonix","2015","Deportes","PC, Consolas"],
+["Rust","Facepunch","2018","Supervivencia","PC, Consolas"],
+["Terraria","Re-Logic","2011","Sandbox","PC, Consolas, Móvil"],
+["Roblox","Roblox Corp.","2006","Plataforma","Multiplataforma"],
+["Elden Ring","FromSoftware","2022","RPG","PC, Consolas"],
+["Cyberpunk 2077","CD Projekt","2020","RPG","PC, Consolas"],
+["Red Dead Redemption 2","Rockstar Games","2018","Acción","PC, Consolas"],
+["Apex Legends","Respawn","2019","Battle Royale","PC, Consolas"],
+["Overwatch 2","Blizzard","2022","Shooter","PC, Consolas"],
+["Rainbow Six Siege","Ubisoft","2015","Shooter","PC, Consolas"],
+["Palworld","Pocketpair","2024","Supervivencia","PC, Xbox"],
+["Stardew Valley","ConcernedApe","2016","Simulación","Multiplataforma"],
+["Marvel Rivals","NetEase Games","2024","Hero Shooter","PC, Consolas"],
+["EA Sports FC 25","EA Sports","2024","Deportes","PC, Consolas"]
+];
+function draw(f=""){
+grid.innerHTML="";
+juegos.filter(j=>j[0].toLowerCase().includes(f.toLowerCase())).forEach(j=>{
+grid.innerHTML+=`<div class=card><h3>${j[0]}</h3><p>${j[3]}</p><button onclick="ver(${JSON.stringify('')}+'${j[0]}')">Ver ficha</button></div>`;
+});
+}
+function ver(nombre){
+const j=juegos.find(x=>x[0]===nombre);
+t.textContent=j[0];
+info.innerHTML=`<b>Desarrollador:</b> ${j[1]}<br><b>Lanzamiento:</b> ${j[2]}<br><b>Género:</b> ${j[3]}<br><b>Plataformas:</b> ${j[4]}<br><br>Próximamente esta ficha incluirá historia, curiosidades, galería, requisitos y noticias relacionadas.`;
+modal.style.display="flex";
+}
+q.oninput=e=>draw(e.target.value);
+draw();
+</script></body></html>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nova Juegos - Parte 2</title>
+<style>
+body{margin:0;font-family:Arial;background:#09111d;color:#eef}
+header{padding:28px;text-align:center;background:linear-gradient(90deg,#2563eb,#7c3aed)}
+section{padding:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:#14213d;padding:16px;border-radius:12px}
+.tag{display:inline-block;padding:4px 8px;border-radius:999px;background:#334155}
+h2{color:#8ec5ff}
+</style></head><body>
+<header><h1>Nova Juegos - Parte 2</h1><p>Noticias, rankings y lanzamientos</p></header>
+
+<section>
+<h2>📰 Noticias destacadas</h2>
+<div class="grid">
+<div class="card"><span class="tag">Actualización</span><h3>Minecraft continúa recibiendo contenido</h3><p>El juego mantiene una comunidad enorme gracias a sus actualizaciones periódicas.</p><button>Leer más</button></div>
+<div class="card"><span class="tag">Competitivo</span><h3>Valorant expande su escena de eSports</h3><p>Los torneos internacionales siguen creciendo en audiencia.</p><button>Leer más</button></div>
+<div class="card"><span class="tag">Battle Royale</span><h3>Fortnite presenta nuevos eventos</h3><p>Los eventos temporales continúan siendo una parte importante del juego.</p><button>Leer más</button></div>
+<div class="card"><span class="tag">Industria</span><h3>Más estudios apuestan por juego cruzado</h3><p>El juego entre plataformas se consolida como tendencia.</p><button>Leer más</button></div>
+</div>
+</section>
+
+<section>
+<h2>🏆 Rankings</h2>
+<div class="grid">
+<div class="card"><h3>Más populares</h3><ol><li>Minecraft</li><li>Fortnite</li><li>Roblox</li><li>GTA V</li><li>Valorant</li></ol></div>
+<div class="card"><h3>Mejor valorados</h3><ol><li>Elden Ring</li><li>The Witcher 3</li><li>Hades</li><li>Stardew Valley</li><li>Red Dead Redemption 2</li></ol></div>
+<div class="card"><h3>En tendencia</h3><ol><li>Marvel Rivals</li><li>Palworld</li><li>Counter‑Strike 2</li><li>Rust</li><li>Rocket League</li></ol></div>
+</div>
+</section>
+
+<section>
+<h2>🚀 Próximos lanzamientos (estructura)</h2>
+<div class="grid">
+<div class="card"><h3>Juego A</h3><p>Fecha: Próximamente</p><p>Estado: En desarrollo</p></div>
+<div class="card"><h3>Juego B</h3><p>Fecha: Próximamente</p><p>Estado: Anunciado</p></div>
+<div class="card"><h3>Juego C</h3><p>Fecha: Próximamente</p><p>Estado: En espera</p></div>
+</div>
+</section>
+
+<footer style="padding:24px;text-align:center;color:#9fb3c8">Nova Juegos © 2026 • Parte 2</footer>
+</body></html>
