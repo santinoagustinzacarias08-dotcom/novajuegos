@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi Google</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #202124;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .top {
+      display: flex;
+      justify-content: flex-end;
+      padding: 15px 20px;
+      gap: 15px;
+      font-size: 14px;
+    }
+
+    .top a {
+      color: white;
+      text-decoration: none;
+      opacity: 0.85;
+    }
+
+    .top a:hover {
+      text-decoration: underline;
+    }
+
+    .center {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 70px;
+      font-weight: bold;
+      letter-spacing: -3px;
+      margin-bottom: 25px;
+    }
+
+    .logo span:nth-child(1) { color: #4285F4; }
+    .logo span:nth-child(2) { color: #EA4335; }
+    .logo span:nth-child(3) { color: #FBBC05; }
+    .logo span:nth-child(4) { color: #4285F4; }
+    .logo span:nth-child(5) { color: #34A853; }
+    .logo span:nth-child(6) { color: #EA4335; }
+
+    .search-box {
+      width: 90%;
+      max-width: 580px;
+      background: #303134;
+      border-radius: 30px;
+      padding: 12px 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: white;
+      font-size: 16px;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .buttons button {
+      background: #303134;
+      border: 1px solid #303134;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .buttons button:hover {
+      border: 1px solid #5f6368;
+    }
+
+    footer {
+      background: #171717;
+      text-align: center;
+      padding: 15px;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top">
+    <a href="#">Gmail</a>
+    <a href="#">Imágenes</a>
+  </div>
+
+  <div class="center">
+
+    <div class="logo">
+      <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+    </div>
+
+    <!-- BARRA DE BÚSQUEDA REAL -->
+    <form id="searchForm" class="search-box">
+      <input id="searchInput" type="text" placeholder="Buscar en Google o escribir una URL..." />
+    </form>
+
+    <div class="buttons">
+      <button onclick="search()">Buscar</button>
+      <button onclick="lucky()">Voy a tener suerte</button>
+    </div>
+
+  </div>
+
+  <footer>
+    🌐 Mi Google personal - creado por ti
+  </footer>
+
+  <script>
+    const form = document.getElementById("searchForm");
+    const input = document.getElementById("searchInput");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      goSearch();
+    });
+
+    function goSearch() {
+      const query = input.value.trim();
+      if (!query) return;
+
+      if (query.startsWith("http")) {
+        window.location.href = query;
+      } else {
+        window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
+      }
+    }
+
+    function search() {
+      goSearch();
+    }
+
+    function lucky() {
+      const query = input.value.trim();
+      if (!query) return;
+      window.location.href = "https://www.google.com/search?btnI=1&q=" + encodeURIComponent(query);
+    }
+  </script>
+
+</body>
+</html>
