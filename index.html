@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game Portal</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1220;
+      color: white;
+    }
+
+    header {
+      background: #111a2e;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #38bdf8;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      opacity: 0.8;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: #16213e;
+      padding: 15px;
+      border-radius: 12px;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      background: #1e2a4d;
+    }
+
+    .title {
+      color: #38bdf8;
+      margin-bottom: 5px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 12px;
+      background: #2563eb;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 12px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🎮 Game Portal</h1>
+  <nav>
+    <a href="#games">Juegos</a>
+    <a href="#news">Noticias</a>
+    <a href="#about">Info</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <div class="section" id="about">
+    <h2>📌 Bienvenido</h2>
+    <p>
+      Este es un portal de información sobre videojuegos donde puedes ver
+      juegos populares, noticias y descripciones claras de cada uno.
+    </p>
+  </div>
+
+  <!-- JUEGOS -->
+  <div class="section" id="games">
+    <h2>🔥 Juegos populares</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="title">Minecraft</div>
+        <p>Juego de mundo abierto donde puedes construir y sobrevivir.</p>
+        <span class="tag">Sandbox</span>
+      </div>
+
+      <div class="card">
+        <div class="title">Valorant</div>
+        <p>FPS táctico competitivo con habilidades únicas.</p>
+        <span class="tag">Shooter</span>
+      </div>
+
+      <div class="card">
+        <div class="title">Fortnite</div>
+        <p>Battle royale con construcción y eventos en vivo.</p>
+        <span class="tag">Battle Royale</span>
+      </div>
+
+      <div class="card">
+        <div class="title">GTA V</div>
+        <p>Mundo abierto con historia y modo online libre.</p>
+        <span class="tag">Open World</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- NOTICIAS -->
+  <div class="section" id="news">
+    <h2>📰 Noticias</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="title">Nueva actualización</div>
+        <p>Se agregaron mejoras de rendimiento y nuevos eventos.</p>
+      </div>
+
+      <div class="card">
+        <div class="title">Evento global</div>
+        <p>Recompensas especiales disponibles esta semana.</p>
+      </div>
+
+      <div class="card">
+        <div class="title">Nuevo lanzamiento</div>
+        <p>Próximos juegos indie están siendo anunciados.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Game Portal - Información de videojuegos
+</footer>
+
+</body>
+</html>
