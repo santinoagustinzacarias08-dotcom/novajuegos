@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NovaPlay Hub</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#0b0f1a;
+color:white;
+}
+
+/* NAV */
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:20px 40px;
+background:#0e1425;
+border-bottom:1px solid rgba(255,255,255,0.1);
+z-index:1000;
+}
+
+.logo{
+color:#7c5cff;
+font-weight:bold;
+letter-spacing:1px;
+}
+
+nav ul{
+display:flex;
+gap:20px;
+list-style:none;
+}
+
+nav ul li{
+cursor:pointer;
+opacity:0.7;
+}
+
+nav ul li:hover{
+opacity:1;
+color:#7c5cff;
+}
+
+/* HERO */
+.hero{
+padding:120px 40px 60px;
+text-align:center;
+}
+
+.hero h1{font-size:42px}
+
+/* SECTIONS */
+.section{padding:40px}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.card{
+background:#151c33;
+padding:18px;
+border-radius:12px;
+cursor:pointer;
+transition:0.3s;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.card:hover{
+transform:scale(1.05);
+background:#1d2550;
+}
+
+/* NEWS */
+.news-card{
+background:#111a33;
+padding:15px;
+border-radius:12px;
+border-left:4px solid #7c5cff;
+}
+
+/* MODAL */
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+}
+
+.modal-content{
+background:#111a33;
+padding:25px;
+border-radius:15px;
+width:320px;
+}
+
+.close{
+float:right;
+cursor:pointer;
+color:#ff4d4d;
+font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">NOVAPLAY HUB</div>
+<ul>
+<li>Inicio</li>
+<li>Juegos</li>
+<li>Noticias</li>
+<li>Ranking</li>
+</ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+<h1>Plataforma Gamer Profesional</h1>
+<p>Juegos, noticias y rankings en un solo lugar</p>
+</div>
+
+<!-- JUEGOS -->
+<div class="section">
+<h2>🎮 Juegos Populares</h2>
+
+<div class="grid">
+
+<div class="card" onclick="openGame('Minecraft','Mojang Studios','2011','Sandbox de mundo abierto donde puedes construir, explorar y sobrevivir libremente.')">
+Minecraft
+</div>
+
+<div class="card" onclick="openGame('Fortnite','Epic Games','2017','Battle Royale con construcción y eventos en vivo globales.')">
+Fortnite
+</div>
+
+<div class="card" onclick="openGame('Valorant','Riot Games','2020','Shooter táctico competitivo 5v5 con agentes únicos.')">
+Valorant
+</div>
+
+<div class="card" onclick="openGame('Grand Theft Auto V','Rockstar Games','2013','Mundo abierto con historia y modo online masivo.')">
+GTA V
+</div>
+
+</div>
+</div>
+
+<!-- NOTICIAS -->
+<div class="section">
+<h2>📰 Noticias Gaming</h2>
+
+<div class="grid">
+
+<div class="news-card">
+🔥 Fortnite lanza nueva temporada con mapa renovado y mecánicas mejoradas
+</div>
+
+<div class="news-card">
+🎮 Riot Games anuncia nuevo agente para Valorant
+</div>
+
+<div class="news-card">
+🚗 GTA Online recibe expansión con nuevas misiones cooperativas
+</div>
+
+<div class="news-card">
+🧱 Minecraft sigue siendo uno de los juegos más jugados del mundo en 2026
+</div>
+
+</div>
+</div>
+
+<!-- RANKING -->
+<div class="section">
+<h2>🏆 Ranking Global</h2>
+
+<div class="grid">
+<div class="card">1. Fortnite — Epic Games</div>
+<div class="card">2. Minecraft — Mojang</div>
+<div class="card">3. Valorant — Riot Games</div>
+<div class="card">4. GTA V — Rockstar Games</div>
+</div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">✖</span>
+<h2 id="title"></h2>
+<p><b>Empresa:</b> <span id="creator"></span></p>
+<p><b>Lanzamiento:</b> <span id="year"></span></p>
+<p id="desc"></p>
+</div>
+</div>
+
+<script>
+function openGame(title, creator, year, desc){
+document.getElementById("modal").style.display="flex";
+document.getElementById("title").innerText=title;
+document.getElementById("creator").innerText=creator;
+document.getElementById("year").innerText=year;
+document.getElementById("desc").innerText=desc;
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+window.onclick = function(e){
+if(e.target.id==="modal"){
+closeModal();
+}
+}
+</script>
+
+</body>
+</html>
